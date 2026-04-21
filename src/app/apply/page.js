@@ -3,6 +3,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { trackInternshipApply } from "@/app/lib/gtag";
+import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ApplyPage() {
@@ -17,6 +19,7 @@ export default function ApplyPage() {
     interest: "",
   });
 
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -34,6 +37,8 @@ export default function ApplyPage() {
       const res = await axios.post("/api/apply", formData);
       if (res.status === 200) {
         toast.success("✅ Application submitted!");
+        trackInternshipApply();
+        setTimeout(() => router.push("/thank-you"), 1200);
         setFormData({
           name: "",
           email: "",

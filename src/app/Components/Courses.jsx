@@ -1,278 +1,272 @@
-import React from "react";
-import Head from "next/head";
-import {
-  FaReact, FaLaptopCode, FaCode, FaIndustry,
-  FaPaintBrush, FaChartLine
-} from "react-icons/fa";
-import { Target, HeartHandshake, Lightbulb, ShieldCheck } from "lucide-react";
-import { Flag, BookOpen, Briefcase, UserCheck, Users, Laptop, ClipboardCheck, HelpCircle } from "lucide-react";
+"use client";
 
-const courses = [
+import { useState } from "react";
+import Link from "next/link";
+import { trackCourseEnquiry, trackWhatsAppClick, trackLeadFormSubmit } from "@/app/lib/gtag";
+
+const categories = [
   {
-    name: "MERN Stack",
-    icon: <FaReact className="text-5xl text-purple-400" />,
-    description: "Master MongoDB, Express.js, React, and Node.js to become a full-stack developer.",
-    link: "Courses/mern-stack-development",
+    id: "school",
+    label: "School",
+    emoji: "🏫",
+    color: "#60a5fa",
+    gradient: "from-blue-600/20 to-blue-800/10",
+    border: "border-blue-500/30",
+    courses: [
+      { name: "ICSE Class 9 — Java", tag: "ICSE", href: "/Courses/icse-class-9-java-dehradun", desc: "Foundation of Java programming for ICSE students. Build logic & OOP skills.", duration: "3 months", mode: "Offline" },
+      { name: "ICSE Class 10 — Java", tag: "ICSE", href: "/Courses/icse-class-10-java-dehradun", desc: "Advanced Java concepts with board exam prep and practical coding.", duration: "4 months", mode: "Offline" },
+      { name: "CBSE Class 11 — Python", tag: "CBSE", href: "/Courses/cbse-class-11-python-dehradun", desc: "Python basics aligned with CBSE curriculum including algorithms.", duration: "3 months", mode: "Offline" },
+      { name: "CBSE Class 12 — Python", tag: "CBSE", href: "/Courses/cbse-class-12-python-dehradun", desc: "Advanced Python with file handling, databases & board exam focus.", duration: "4 months", mode: "Offline" },
+    ],
   },
   {
-    name: "Full Stack",
-    icon: <FaLaptopCode className="text-5xl text-blue-400" />,
-    description: "Comprehensive training in front-end and back-end technologies for full-stack development.",
-    link: "Courses/full-stack-development",
+    id: "college",
+    label: "College",
+    emoji: "🎓",
+    color: "#c084fc",
+    gradient: "from-purple-600/20 to-purple-800/10",
+    border: "border-purple-500/30",
+    courses: [
+      { name: "Programming Languages", tag: "Multi-Lang", href: "/Courses/java-python-programming-dehradun", desc: "Java · Python · C · C++ · C# · PHP — Pick your language and master it.", duration: "3–6 months", mode: "Online/Offline" },
+      { name: "Web Development", tag: "Web Dev", href: "/Courses/web-development-course-dehradun", desc: "HTML, CSS, JS, Bootstrap, and full web development workflow.", duration: "4 months", mode: "Online/Offline" },
+    ],
   },
   {
-    name: "Programming Language",
-    icon: <FaCode className="text-5xl text-green-400" />,
-    description: "Learn essential programming languages like Python, Java, C++, and more.",
-    link: "Courses/programming-languages",
+    id: "jobready",
+    label: "Job Ready",
+    emoji: "🚀",
+    color: "#f472b6",
+    gradient: "from-pink-600/20 to-pink-800/10",
+    border: "border-pink-500/30",
+    courses: [
+      { name: "React JS", tag: "React", href: "/Courses/react-js-course-dehradun", desc: "Build dynamic UIs with React hooks, context, and real projects.", duration: "2 months", mode: "Online/Offline" },
+      { name: "Next.js", tag: "Next.js", href: "/Courses/nextjs-course-dehradun", desc: "Full-stack Next.js with SSR, SSG, API routes and deployment.", duration: "2 months", mode: "Online/Offline" },
+      { name: "Frontend Development", tag: "Frontend", href: "/Courses/frontend-course-dehradun", desc: "Complete frontend mastery — HTML, CSS, JS, React, Tailwind.", duration: "3 months", mode: "Online/Offline" },
+      { name: "Backend Development", tag: "Backend", href: "/Courses/backend-course-dehradun", desc: "Node.js, Express, REST APIs, MongoDB, SQL databases.", duration: "3 months", mode: "Online/Offline" },
+      { name: "Full Stack Dev", tag: "Full Stack", href: "/Courses/fullstack-course-dehradun", desc: "End-to-end development from UI to database. Job-guaranteed support.", duration: "6 months", mode: "Online/Offline" },
+    ],
   },
   {
-    name: "Industrial Training",
-    icon: <FaIndustry className="text-5xl text-orange-400" />,
-    description: "Hands-on industry experience with real-world projects and mentorship.",
-    link: "Courses/industrial-training",
-  },
-  {
-    name: "Graphic Design",
-    icon: <FaPaintBrush className="text-5xl text-pink-400" />,
-    description: "Enhance your creativity with Photoshop, Illustrator, and other design tools.",
-    link: "Courses/graphic-design",
-  },
-  {
-    name: "SEO & Digital Marketing",
-    icon: <FaChartLine className="text-5xl text-yellow-400" />,
-    description: "Optimize web presence and master digital marketing strategies.",
-    link: "Courses/seo-digital-marketing",
+    id: "industrial",
+    label: "Industrial Training",
+    emoji: "🏭",
+    color: "#fb923c",
+    gradient: "from-orange-600/20 to-orange-800/10",
+    border: "border-orange-500/30",
+    courses: [
+      { name: "MERN Stack Training", tag: "MERN", href: "/Courses/mern-stack-development", desc: "MongoDB, Express, React, Node — industry-grade training with live projects.", duration: "6 months", mode: "Offline + Live" },
+      { name: "Next.js Industrial", tag: "Next.js", href: "/Courses/nextjs-course-dehradun", desc: "Professional Next.js development with real-world company projects.", duration: "4 months", mode: "Offline + Live" },
+      { name: "Frontend Industrial", tag: "Frontend", href: "/Courses/frontend-course-dehradun", desc: "Agency-level frontend skills with client project exposure.", duration: "3 months", mode: "Offline + Live" },
+      { name: "Backend Industrial", tag: "Backend", href: "/Courses/backend-course-dehradun", desc: "Server architecture, APIs, and backend systems at company scale.", duration: "3 months", mode: "Offline + Live" },
+    ],
   },
 ];
 
-const historyData = [
-  {
-    year: "2023",
-    title: "Founded the Company",
-    description: `Our journey began in Dehradun with a vision to revolutionize education.
-      We started with a small but passionate team, determined to provide high-quality learning experiences.
-      From day one, our goal has been to create an innovative platform that bridges the gap between students and expert educators.`,
-    icon: Flag,
-  },
-  {
-    year: "2024",
-    title: "Expanded to Multiple Cities",
-    description: `With overwhelming student success and positive feedback, we expanded to multiple cities.
-      Our hybrid learning model—both online and offline—enabled students from different locations to access top-notch education.
-      We also introduced interactive learning sessions, ensuring a more engaging and effective teaching approach.`,
-    icon: Briefcase,
-  },
-  {
-    year: "2025",
-    title: "Launched Advanced Courses",
-    description: `Recognizing the diverse needs of students, we introduced specialized courses tailored for various career paths.
-      Our curriculum was enriched with real-world applications, industry-driven projects, and mentorship programs.
-      By leveraging technology, we ensured that learning became more practical, dynamic, and impactful.`,
-    icon: BookOpen,
-  },
-];
+const WA_NUMBER = "9837218345";
 
-// JSON-LD Structured Data for Organization and Local Business SEO
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  name: "CodewareIT Pvt Ltd",
-  url: "https://www.codewareit.in",
-  logo: "https://www.codewareit.in/og-image.jpg",
-  description:
-    "CodewareIT Pvt Ltd is the premier coding and programming training institute and company in Dehradun, Uttarakhand offering expert courses in MERN stack, Python, Java, PHP, and IT internships.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Karanpur and Prem Nagar",
-    addressLocality: "Dehradun",
-    addressRegion: "Uttarakhand",
-    postalCode: "248001",
-    addressCountry: "IN",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+91-9837218345",
-    contactType: "customer support",
-  },
-  sameAs: [
-    "https://www.facebook.com/codewareit",
-    "https://www.linkedin.com/company/codewareit-pvt-ltd",
-    // Add your other official social URLs
-  ],
-};
+function CourseCard({ course, color, onEnquire }) {
+  return (
+    <article className="group relative bg-[#0a1240] border border-white/8 hover:border-white/20 rounded-2xl p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40 cursor-pointer overflow-hidden">
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{background: `radial-gradient(ellipse at top right, ${color}15, transparent 70%)`}} />
+      
+      <div className="flex items-start justify-between mb-3 relative z-10">
+        <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-lg" style={{background: color+"22", color}}>
+          {course.tag}
+        </span>
+        <span className="text-[10px] text-gray-500 flex items-center gap-1">
+          <span>🕒</span> {course.duration}
+        </span>
+      </div>
 
-export default function HomePage() {
+      <h3 className="text-white font-bold text-base mb-2 relative z-10 group-hover:text-white/90 transition-colors leading-snug">
+        {course.name}
+      </h3>
+      <p className="text-gray-400 text-xs leading-relaxed flex-1 relative z-10 mb-4">{course.desc}</p>
+
+      <div className="flex items-center gap-1.5 mb-4 relative z-10">
+        <span className="text-[10px] bg-white/5 text-gray-400 px-2 py-1 rounded-md">{course.mode}</span>
+      </div>
+
+      <div className="flex items-center gap-2 relative z-10">
+        <Link href={course.href} className="flex-1 text-center text-xs font-semibold py-2 rounded-xl border border-white/15 text-gray-300 hover:text-white hover:border-white/30 transition-all">
+          View Details
+        </Link>
+        <button onClick={() => { trackCourseEnquiry(course.name); onEnquire(course.name); }} className="flex-1 text-center text-xs font-semibold py-2 rounded-xl text-white transition-all" style={{background: color+"cc"}}>
+          Enquire Now
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function EnquiryModal({ courseName, onClose }) {
+  const [form, setForm] = useState({ name: "", phone: "", category: "" });
+
+  const handleSubmit = () => {
+    if (!form.name || !form.phone) return alert("Please fill your name and phone number.");
+    const msg = encodeURIComponent(
+      `Hi CodewareIT! 🙏\n\nI'm interested in enrolling.\n\n*Name:* ${form.name}\n*Phone:* ${form.phone}\n*Interested In:* ${courseName}${form.category ? `\n*Category:* ${form.category}` : ""}\n\nPlease share details.`
+    );
+    trackLeadFormSubmit(courseName);
+    trackWhatsAppClick("enquiry_modal");
+    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, "_blank");
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="relative bg-[#060D30] border border-white/15 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}>
+        <div className="h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-green-400" />
+        <div className="p-6">
+          <div className="flex items-start justify-between mb-5">
+            <div>
+              <h3 className="text-white font-bold text-lg leading-tight">Enquire About Course</h3>
+              <p className="text-gray-400 text-sm mt-1">{courseName}</p>
+            </div>
+            <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors text-xl ml-4 mt-0.5">✕</button>
+          </div>
+
+          <div className="space-y-3">
+            <div>
+              <label className="text-xs text-gray-400 font-medium block mb-1.5">Your Name *</label>
+              <input
+                type="text" placeholder="Enter your full name"
+                value={form.name}
+                onChange={(e) => setForm({...form, name: e.target.value})}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-gray-400 font-medium block mb-1.5">Phone Number *</label>
+              <input
+                type="tel" placeholder="Your WhatsApp number"
+                value={form.phone}
+                onChange={(e) => setForm({...form, phone: e.target.value})}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500 transition-colors"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-gray-400 font-medium block mb-1.5">I am a...</label>
+              <select
+                value={form.category}
+                onChange={(e) => setForm({...form, category: e.target.value})}
+                className="w-full bg-[#0a1240] border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-purple-500 transition-colors"
+              >
+                <option value="">Select your category</option>
+                <option value="School Student (ICSE)">School Student — ICSE</option>
+                <option value="School Student (CBSE)">School Student — CBSE</option>
+                <option value="College / Graduation Student">College / Graduation Student</option>
+                <option value="Job Seeker">Job Seeker</option>
+                <option value="Working Professional">Working Professional</option>
+              </select>
+            </div>
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            className="w-full mt-5 py-3.5 rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
+          >
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.534 5.879L0 24l6.31-1.512A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.966 0-3.81-.519-5.4-1.426l-.387-.228-4.014.962.998-3.897-.253-.4A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Send Enquiry on WhatsApp
+          </button>
+          <p className="text-center text-gray-600 text-xs mt-3">Your info goes directly to our counselor 🎓</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function CoursesSection() {
+  const [activeTab, setActiveTab] = useState("school");
+  const [enquiryCourse, setEnquiryCourse] = useState(null);
+  const active = categories.find((c) => c.id === activeTab);
+
   return (
     <>
-      <Head>
-        <title>
-          CodewareIT - Best Coding and Programming Training Institute & Company in Dehradun, Uttarakhand
-        </title>
-        <meta
-          name="description"
-          content="CodewareIT Pvt Ltd offers expert and job-ready training in MERN, Python, Java, PHP, ReactJS, and industry internships. The best coding institute and company in Dehradun, Uttarakhand."
-        />
-        <meta
-          name="keywords"
-          content="CodewareIT, coding institute Dehradun, programming training Uttarakhand, MERN stack Dehradun, Python training, Java classes, PHP programming, IT internship Dehradun"
-        />
-        <meta property="og:title" content="CodewareIT - Premier Coding Institute in Dehradun" />
-        <meta
-          property="og:description"
-          content="Join CodewareIT Pvt Ltd for best coding courses and internships in Dehradun, Uttarakhand. Learn MERN stack, Python, Java, PHP and get job assistance."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.codewareit.in" />
-        <meta property="og:image" content="https://www.codewareit.in/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="CodewareIT - Top Coding & Programming Institute in Dehradun" />
-        <meta
-          name="twitter:description"
-          content="Enroll at CodewareIT Pvt Ltd, the best coding training and internship provider in Dehradun, Uttarakhand."
-        />
-        <meta name="twitter:image" content="https://www.codewareit.in/og-image.jpg" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+        .cs-section { font-family: 'DM Sans', sans-serif; }
+        .tab-pill {
+          transition: all 0.25s;
+          white-space: nowrap;
+        }
+        .tab-pill.active {
+          color: white; font-weight: 600;
+        }
+        .grid-anim { animation: gridIn 0.3s ease; }
+        @keyframes gridIn {
+          from { opacity:0; transform: translateY(8px); }
+          to   { opacity:1; transform: translateY(0); }
+        }
+      `}</style>
 
-      <main>
-        {/* Hero Section */}
-        {/* <section className="bg-gradient-to-br from-blue-50 to-white py-20 px-6 md:px-16 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-            <div className="animate-fadeInLeft">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
-                Elevate Your <br /> IT Skills, Tech Career, and Future with Codeware IT
-              </h1>
-              <p className="mt-6 text-gray-700 text-lg">
-                Empowering aspiring developers through expert training in Full Stack Development, Python, Java, MERN Stack, and more.
-              </p>
-              <a
-                href="#courses"
-                className="mt-6 inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105"
-              >
-                Explore Our Courses
-              </a>
-            </div>
-            <div className="relative flex flex-col items-center gap-6">
-              <article className="bg-gradient-to-r from-blue-400 to-purple-500 shadow-xl p-6 rounded-lg w-96 text-center transform hover:scale-105 transition-transform animate-fadeInUp delay-200">
-                <h3 className="font-bold text-white text-xl">Transform Your Career</h3>
-                <p className="text-white mt-2">Join our community and gain industry-relevant skills.</p>
-              </article>
+      {enquiryCourse && <EnquiryModal courseName={enquiryCourse} onClose={() => setEnquiryCourse(null)} />}
 
-              <article className="bg-gradient-to-r from-green-400 to-blue-500 shadow-xl p-6 rounded-lg w-96 text-center transform hover:scale-105 transition-transform animate-fadeInUp delay-400">
-                <h3 className="font-bold text-white text-xl">Expert-Led Training</h3>
-                <p className="text-white mt-2">Learn from industry professionals with hands-on experience.</p>
-              </article>
+      <section className="cs-section py-20 sm:py-28 bg-[#040A26] relative overflow-hidden" id="courses" aria-labelledby="courses-heading">
+        {/* BG glow */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/8 rounded-full blur-3xl pointer-events-none" />
 
-              <article className="bg-gradient-to-r from-purple-400 to-pink-500 shadow-xl p-6 rounded-lg w-96 text-center transform hover:scale-105 transition-transform animate-fadeInUp delay-600">
-                <h3 className="font-bold text-white text-xl">Job-Ready Programs</h3>
-                <p className="text-white mt-2">Get certified and step into your dream IT career.</p>
-              </article>
-            </div>
-          </div>
-        </section> */}
-
-        {/* Courses Section */}
-        <section id="courses" className="bg-white text-[#040A26] py-20 px-6" aria-label="Courses Offered">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight text-[#040A26]">Our Courses</h2>
-            <p className="text-lg text-black">
-              Explore our job-ready programs and elevate your skills with Codeware IT Pvt Ltd.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 text-purple-300 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-4">
+              🎓 Programs & Courses
+            </span>
+            <h2 id="courses-heading" className="text-3xl sm:text-5xl font-extrabold text-white mb-4" style={{fontFamily:"'Syne',sans-serif"}}>
+              Find Your Perfect<br/>
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Learning Path</span>
+            </h2>
+            <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              From school students to working professionals — we have a course crafted exactly for you.
             </p>
           </div>
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            {courses.map((course, idx) => (
-              <article key={idx} aria-label={`${course.name} Course`} className="bg-[#0B122F] border border-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-purple-600/20 hover:scale-[1.02] transition duration-300">
-                <div className="mb-4">{course.icon}</div>
-                <h3 className="text-2xl font-bold mb-2 text-white">{course.name}</h3>
-                <p className="text-gray-300 text-sm mb-4">{course.description}</p>
-                <a href={`/${course.link}`} className="inline-block text-sm bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-md font-medium transition">
-                  Learn More
-                </a>
-              </article>
+
+          {/* Category Tabs */}
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 justify-start sm:justify-center mb-10 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`tab-pill flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm border flex-shrink-0 ${
+                  activeTab === cat.id
+                    ? "text-white border-transparent"
+                    : "text-gray-400 border-white/10 hover:border-white/25 hover:text-gray-200"
+                }`}
+                style={activeTab === cat.id ? { background: cat.color+"25", borderColor: cat.color+"50", color: cat.color } : {}}
+              >
+                <span>{cat.emoji}</span>
+                {cat.label}
+              </button>
             ))}
           </div>
-          <div className="mt-16 text-center">
-            <a href="/Courses" className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-indigo-500/50 transform hover:scale-105 transition">
-              View All Courses
-            </a>
-          </div>
-        </section>
 
-        {/* About Section */}
-        {/* <section className="bg-gradient-to-r from-blue-800 to-purple-900 text-white py-24 text-center shadow-lg mt-[5rem]" aria-label="About CodewareIT">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-lg">About Us</h2>
-          <p className="text-lg md:text-xl mt-4 font-light">
-            CodewareIT Pvt Ltd, located in Dehradun, Uttarakhand, is a leading company in coding education and IT training with top-notch programs and industry internships.
-          </p>
-        </section> */}
-
-        {/* History Section */}
-        {/* <section className="py-20 bg-gradient-to-b from-white to-gray-100" aria-label="Our History Timeline">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-5xl font-extrabold text-gray-900 text-center mb-12">Our History</h2>
-            <div className="relative border-l-4 border-blue-500 pl-6">
-              {historyData.map((event, index) => (
-                <article key={index} className="mb-10" aria-label={event.title}>
-                  <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-3 rounded-full text-white shadow-lg">
-                      <event.icon size={30} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-gray-900">{event.year}</h3>
-                      <h4 className="text-xl font-medium text-blue-600">{event.title}</h4>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mt-2 ml-14 leading-relaxed">{event.description}</p>
-                </article>
+          {/* Course grid */}
+          {active && (
+            <div key={active.id} className={`grid-anim grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${active.courses.length <= 2 ? "2" : active.courses.length === 3 ? "3" : "4"} gap-4 sm:gap-5`}>
+              {active.courses.map((course, i) => (
+                <CourseCard key={i} course={course} color={active.color} onEnquire={setEnquiryCourse} />
               ))}
             </div>
-          </div>
-        </section> */}
+          )}
 
-        {/* Why Choose Us Section */}
-        {/* <section className="py-20 bg-gradient-to-b from-blue-50 to-white mt-[4rem]" aria-label="Why Choose CodewareIT">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <h2 className="text-5xl font-extrabold text-gray-800 mb-6">Why Choose Us?</h2>
-            <p className="text-lg text-gray-600 mb-12">Empowering students with the best teaching methods to achieve academic success.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <UserCheck size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Expert Teachers</h3>
-                <p className="text-gray-600 mt-2">Learn from highly qualified educators with years of experience.</p>
-              </article>
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <Users size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Small Batch Sizes</h3>
-                <p className="text-gray-600 mt-2">Get personalized attention with small and interactive classes.</p>
-              </article>
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <Laptop size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Online & Offline Classes</h3>
-                <p className="text-gray-600 mt-2">Flexible learning with both online and offline options.</p>
-              </article>
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <ClipboardCheck size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Regular Tests & Feedback</h3>
-                <p className="text-gray-600 mt-2">Track your progress with regular assessments and feedback.</p>
-              </article>
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <HelpCircle size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Doubt Clearing Sessions</h3>
-                <p className="text-gray-600 mt-2">Clear all your doubts with dedicated doubt-solving sessions.</p>
-              </article>
-              <article className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                <Briefcase size={40} className="text-blue-500 mx-auto" />
-                <h3 className="text-xl font-semibold text-gray-800 mt-4">Career Guidance</h3>
-                <p className="text-gray-600 mt-2">Get expert advice on career paths and future opportunities.</p>
-              </article>
-            </div>
+          {/* Bottom CTA */}
+          <div className="mt-14 text-center">
+            <p className="text-gray-500 text-sm mb-5">Not sure which course is right for you?</p>
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I need help choosing the right course at CodewareIT. Can you guide me?")}`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-8 py-4 rounded-full font-bold text-sm sm:text-base transition-all hover:scale-105 hover:shadow-xl hover:shadow-green-500/25"
+            >
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.534 5.879L0 24l6.31-1.512A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.966 0-3.81-.519-5.4-1.426l-.387-.228-4.014.962.998-3.897-.253-.4A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Get Free Counselling on WhatsApp
+            </a>
           </div>
-        </section> */}
-      </main>
+        </div>
+      </section>
     </>
   );
 }

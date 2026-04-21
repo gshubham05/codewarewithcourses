@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   FaCheckCircle,
@@ -24,6 +25,7 @@ export default function CourseLandingPage({ course }) {
     phone: "",
     classOrCourse: "",
   });
+  const router = useRouter();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
@@ -91,6 +93,7 @@ export default function CourseLandingPage({ course }) {
       trackDemoRegister({ course: course.title, source: "course_landing_form" });
 
       setSubmitted(true);
+      setTimeout(() => router.push("/thank-you"), 800);
     } catch (err) {
       console.log(err);
     } finally {
