@@ -1,4 +1,4 @@
-import { pingGoogle } from "../../lib/pingGoogle";
+import { pingGoogle } from "../lib/pingGoogle";
 
 export const revalidate = 86400;
 
