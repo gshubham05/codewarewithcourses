@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const stats = [
-  { value: "500+", label: "Students Trained", icon: "🎓" },
+  { value: "100+", label: "Students Trained", icon: "🎓" },
   { value: "50+",  label: "Live Projects",    icon: "🚀" },
-  { value: "95%",  label: "Placement Rate",   icon: "💼" },
+  { value: "98%",  label: "Board Exam Pass Rate",   icon: "📝" },
   { value: "10+",  label: "Expert Mentors",   icon: "👨‍💻" },
 ];
 
@@ -23,6 +23,24 @@ const techBadges = [
 export default function HeroBanner() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  const handleDemoClick = () => {
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "demo_booking_click", page: "hero" });
+    }
+    window.open(
+      "https://wa.me/9837218345?text=Hi%2C%20I%20want%20to%20book%20a%20FREE%20Demo%20Class!",
+      "_blank"
+    );
+  };
+
+  const handleCallClick = () => {
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "phone_click", phone_number: "9837218345" });
+    }
+  };
 
   return (
     <section
@@ -47,10 +65,16 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto text-white px-2 sm:px-6 py-12 sm:py-20 w-full">
 
-        {/* Live badge */}
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-5 text-xs sm:text-sm font-medium text-purple-200">
-          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
-          🏆 #1 IT Training Institute in Dehradun
+        {/* Urgency + Trust badges row */}
+        <div className="flex flex-wrap justify-center gap-2 mb-5">
+          <div className="inline-flex items-center gap-2 bg-red-500/20 backdrop-blur-sm border border-red-400/40 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-red-200">
+            <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse flex-shrink-0" />
+            🔥 May Batch — Only 4 Seats Left!
+          </div>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-purple-200">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+            🏆 #1 IT Training Institute in Dehradun
+          </div>
         </div>
 
         {/* Headline */}
@@ -70,26 +94,45 @@ export default function HeroBanner() {
         <p className="text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mt-3">
           Join Dehradun's most trusted coding institute —
           <strong className="text-white"> real-world projects</strong>, expert mentorship &amp;
-          <strong className="text-white"> guaranteed placement support</strong>.
+          <strong className="text-white"> guaranteed results guaranteed placement supportamp; placement support</strong>.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+        {/* Phone + WhatsApp row */}
+        <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="tel:9837218345"
+            onClick={handleCallClick}
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105"
+          >
+            📞 <span>+91 98372 18345</span>
+          </a>
           <a
             href="https://wa.me/9837218345"
             target="_blank" rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-2xl shadow-purple-500/30 transition-all hover:scale-105 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-green-500/20 hover:bg-green-500/30 border border-green-400/40 text-green-300 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105"
           >
-            🚀 Get Started Free
+            💬 WhatsApp Us
+          </a>
+        </div>
+
+        {/* PRIMARY CTA Buttons */}
+        <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          <button
+            onClick={handleDemoClick}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-400 hover:to-pink-500 text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-2xl shadow-orange-500/30 transition-all hover:scale-105 hover:-translate-y-0.5"
+          >
+            🎁 Book FREE Demo Class
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </button>
           <Link href="/Courses"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:scale-105 hover:-translate-y-0.5">
             📚 Explore Courses
           </Link>
         </div>
+
+        <p className="mt-3 text-xs text-gray-400">✓ No Cost &nbsp;·&nbsp; ✓ No Obligation &nbsp;·&nbsp; ✓ Meet Your Instructor Before You Commit</p>
 
         {/* Stats row */}
         <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">

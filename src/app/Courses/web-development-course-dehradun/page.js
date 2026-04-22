@@ -1,6 +1,6 @@
-import courseData from "../courseData";
-import CourseLandingPage from "../CourseLandingPage";
-import CourseStructuredData from "@/app/Components/CourseStructuredData";
+import courseData from "../../Courses/courseData";
+import CourseLandingPage from "../../Courses/CourseLandingPage";
+import CourseStructuredData from "../../Components/CourseStructuredData";
 
 const SLUG = "web-development-course-dehradun";
 
@@ -13,7 +13,7 @@ export async function generateMetadata() {
     openGraph: {
       title: course.metaTitle,
       description: course.metaDescription,
-      url: `https://www.codewareit.in/courses/${SLUG}`,
+      url: "https://www.codewareit.in/courses/" + SLUG,
       siteName: "Codeware IT Pvt Ltd",
       locale: "en_IN",
       type: "website",
@@ -24,7 +24,7 @@ export async function generateMetadata() {
       description: course.metaDescription,
     },
     alternates: {
-      canonical: `https://www.codewareit.in/courses/${SLUG}`,
+      canonical: "https://www.codewareit.in/courses/" + SLUG,
     },
   };
 }

@@ -2,49 +2,19 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { GA_ID, AW_ID, pageview, adsRemark } from "@/app/lib/gtag";
+import { GA_ID, pageview } from "@/app/lib/gtag";
 
-// ─────────────────────────────────────────────────────────
-// Fires on every SPA route change:
-//   • GA4 pageview
-//   • Google Ads remarketing pixel (tags every visitor)
-//   • Audience segmentation (course pages, blog readers)
-//   • Thank-you confirmation
-// ─────────────────────────────────────────────────────────
-
+// NOTE: The actual <Script> tags are in layout.js (server component).
+// This client component handles SPA route-change page view firing only.
 export default function GoogleAnalytics() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!pathname || typeof window === "undefined" || !window.gtag) return;
-
-    // 1. GA4 pageview
-    pageview(pathname);
-
-    // 2. Remarketing — tag every visitor for retargeting lists
-    adsRemark({ page_location: window.location.href });
-
-    // 3. Course page visitors → "Course Interested" remarketing list
-    if (pathname.startsWith("/Courses") || pathname.startsWith("/courses")) {
-      window.gtag("event", "course_page_view", {
-        send_to: AW_ID,
-        page_path: pathname,
-      });
-    }
-
-    // 4. Blog readers → "Warm Audience" remarketing list
-    if (pathname.startsWith("/blog")) {
-      window.gtag("event", "blog_reader", {
-        send_to: AW_ID,
-        page_path: pathname,
-      });
-    }
-
-    // 5. Thank-you = confirmed conversion
-    if (pathname === "/thank-you") {
-      import("@/app/lib/gtag").then(({ trackThankYou }) => trackThankYou());
+    if (pathname && typeof window !== "undefined" && window.gtag) {
+      pageview(pathname);
     }
   }, [pathname]);
 
+  // No scripts here — they live in layout.js to avoid duplicate loading
   return null;
 }

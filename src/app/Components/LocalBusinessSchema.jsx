@@ -1,23 +1,23 @@
 /**
  * LocalBusinessSchema — JSON-LD for Local SEO
- * Place in layout.js or homepage for Google Maps & local pack ranking.
+ * NAP matches Google My Business exactly: House No. 2, Shakti Vihar, Suman Nagar, Adhoiwala, Dehradun
  */
 export default function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": ["EducationalOrganization", "LocalBusiness"],
-    name: "Codeware IT Pvt Ltd",
-    alternateName: "CodewareIT",
+    name: "CodewareIT Pvt Ltd",
+    alternateName: "Codeware IT",
     url: "https://www.codewareit.in",
     logo: "https://www.codewareit.in/logo.png",
     image: "https://www.codewareit.in/og-image.jpg",
     description:
-      "Best Java, Python, C Language, MERN Stack & AI training institute in Dehradun. ICSE, CBSE coaching for Class 9-12, plus job-ready full stack courses with internships.",
+      "Best Java, Python, MERN Stack & Full Stack training institute in Dehradun. ICSE & CBSE coding coaching for Class 9–12, plus job-ready Full Stack courses with internship support.",
     telephone: "+91-9837218345",
-    email: "info@codewareit.in", // UPDATE IF DIFFERENT
+    email: "info@codewareit.in",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Your Street Address, Landmark", // UPDATE THIS
+      streetAddress: "House No. 2, Shakti Vihar, Suman Nagar, Adhoiwala",
       addressLocality: "Dehradun",
       addressRegion: "Uttarakhand",
       postalCode: "248001",
@@ -25,37 +25,30 @@ export default function LocalBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "30.3165", // UPDATE with exact lat
-      longitude: "78.0322", // UPDATE with exact lng
+      latitude: "30.3523",
+      longitude: "78.0536",
     },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "20:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: "09:00",
-        closes: "18:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "07:00",
+        closes: "22:00",
       },
     ],
     priceRange: "₹₹",
     currenciesAccepted: "INR",
     paymentAccepted: "Cash, UPI, Bank Transfer",
-    hasMap: "https://maps.google.com/?q=Codeware+IT+Dehradun", // UPDATE with Maps link
+    hasMap: "https://maps.app.goo.gl/xu8jqx467KMPTKzY7",
     sameAs: [
-      "https://www.instagram.com/codewareit",
-      "https://www.facebook.com/codewareit",
-      "https://www.youtube.com/@codewareit",
-      "https://www.linkedin.com/company/codewareit",
+      "https://www.instagram.com/codewareit.in",
+      "https://www.facebook.com/share/1FKkhHpFEx",
+      "https://www.linkedin.com/company/codeware-it-dehradun",
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "150", // UPDATE with real count
+      ratingValue: "5.0",
+      reviewCount: "36",
       bestRating: "5",
       worstRating: "1",
     },
@@ -67,9 +60,12 @@ export default function LocalBusinessSchema() {
         { "@type": "Offer", itemOffered: { "@type": "Course", name: "ICSE Class 10 Java" } },
         { "@type": "Offer", itemOffered: { "@type": "Course", name: "CBSE Class 11 Python" } },
         { "@type": "Offer", itemOffered: { "@type": "Course", name: "CBSE Class 12 Python" } },
+        { "@type": "Offer", itemOffered: { "@type": "Course", name: "BCA MCA BTech Programming" } },
         { "@type": "Offer", itemOffered: { "@type": "Course", name: "Full Stack Web Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Course", name: "MERN Stack Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Course", name: "React JS Course" } },
-        { "@type": "Offer", itemOffered: { "@type": "Course", name: "Backend Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Course", name: "Next.js Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Course", name: "Backend Node.js Development" } },
       ],
     },
   };
