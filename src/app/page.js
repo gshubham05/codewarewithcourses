@@ -2,11 +2,12 @@ import React from "react";
 import Herosection from "./Components/Herosection";
 import Aboutcompany from "./Components/Aboutcompany";
 import Faq from "./Components/Faq";
-import Courses from "./Components/Courses";
+// import courses from "./Components/courses";
 import Cstatistics from "./Components/Cstatistics";
 import BlogPreview from "./Components/BlogPreview";
 import Testimonials from "./Components/Testimonials";
 import BatchSchedule from "./Components/BatchSchedule";
+import Courses from "./Components/courses";
 
 const faqSchema = {
   "@context": "https://schema.org",
