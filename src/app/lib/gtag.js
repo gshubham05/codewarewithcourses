@@ -6,12 +6,12 @@ export const GA_ID = "G-CHHEXD2NKX";
 export const GOOGLE_ADS_ID = "AW-16549958925";
 
 // Conversion labels — from Google Ads → Goals → Conversions
-// Image shows: conversion name is "form_start" (Click type)
-// ⚠️  When you create more conversions (WhatsApp, thank-you page),
-//     add their send_to values here like: "AW-16549958925/XXXXXXXX"
-export const CONVERSION_FORM_START   = "AW-16549958925";   // form_start (click)
-export const CONVERSION_WHATSAPP     = "AW-16549958925";   // update with /label after creating
-export const CONVERSION_DEMO_SUBMIT  = "AW-16549958925";   // update with /label after creating
+// To get the /label suffix: Google Ads → Goals → Conversions → click a conversion → Tag setup → "Use Google Tag Manager" → copy the send_to value (e.g. "AW-16549958925/AbCdEfGhIj")
+// ⚠️  Replace the placeholder values below with real /label suffixes from your Google Ads account
+export const CONVERSION_FORM_START   = "AW-16549958925";   // ⚠️  update: "AW-16549958925/XXXXXXXX"
+export const CONVERSION_WHATSAPP     = "AW-16549958925";   // ⚠️  update: "AW-16549958925/XXXXXXXX"
+export const CONVERSION_DEMO_SUBMIT  = "AW-16549958925";   // ⚠️  update: "AW-16549958925/XXXXXXXX"
+export const CONVERSION_THANK_YOU    = "AW-16549958925";   // ⚠️  update: "AW-16549958925/XXXXXXXX"
 
 // ─── Page View (GA4) ─────────────────────────────
 export const pageview = (url) => {
@@ -107,5 +107,26 @@ export const trackPhoneCall = ({ label = "phone_click" } = {}) => {
   window.gtag("event", "phone_call_click", {
     event_category: "engagement",
     event_label: label,
+  });
+};
+
+// ─── Thank You Page View (GA4 + Google Ads) ───────
+// Fires when a user lands on the /thank-you page after submitting enquiry
+export const trackThankYou = ({ course = "", source = "" } = {}) => {
+  if (typeof window === "undefined" || !window.gtag) return;
+
+  // GA4 — standard "purchase" equivalent for lead-gen funnels
+  window.gtag("event", "thank_you_page_view", {
+    event_category: "leads",
+    event_label: "enquiry_complete",
+    course_name: course,
+    form_source: source,
+  });
+
+  // Google Ads — counts as a completed conversion
+  window.gtag("event", "conversion", {
+    send_to: CONVERSION_THANK_YOU,
+    event_category: "leads",
+    event_label: "thank_you",
   });
 };
