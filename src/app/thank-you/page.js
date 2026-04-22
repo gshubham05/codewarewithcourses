@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { trackThankYou } from "@/app/lib/gtag";
+
 import Link from "next/link";
+import { trackThankYou } from "../lib/gtag";
 
 const quotes = [
   {
