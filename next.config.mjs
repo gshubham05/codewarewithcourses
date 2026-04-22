@@ -12,6 +12,11 @@ const nextConfig = {
         protocol: "http",
         hostname: "**",
       },
+      {
+        source: "/Courses/:path*",
+        destination: "/courses/:path*",
+        permanent: true,
+      },
     ],
   },
   serverExternalPackages: ["mongoose"],
