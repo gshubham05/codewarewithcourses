@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { trackThankYou } from "../lib/gtag";
 
+
 const quotes = [
   {
     text: "The secret of getting ahead is getting started. You've already done the hardest part.",
