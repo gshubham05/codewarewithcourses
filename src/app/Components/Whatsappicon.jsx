@@ -2,6 +2,7 @@
 
 import React from "react";
 import { trackWhatsApp } from "../lib/gtag";
+import Image from "next/image";
 
 const Whatsappicon = ({ course = "", source = "float_button" }) => {
   const handleClick = () => {
@@ -31,15 +32,15 @@ const Whatsappicon = ({ course = "", source = "float_button" }) => {
       href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-5 z-50 w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 group"
+      className="fixed sm:bottom-6 bottom-[70px]  right-5 z-50 w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 group"
       title="Chat with Codeware IT on WhatsApp — coding courses in Dehradun"
       aria-label="Chat with Codeware IT on WhatsApp for coding courses in Dehradun"
     >
       {/* Pulse ring */}
       <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-50 animate-ping" />
-      <img
+      <Image
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
+        alt="WhatsApp Codewareit  "
         className="w-8 h-8 relative z-10"
         width={32}
         height={32}

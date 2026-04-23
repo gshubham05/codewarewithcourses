@@ -9,6 +9,7 @@ import GoogleAnalytics from "./Components/GoogleAnalytics";
 import PopupBanner from "./Components/PopupBanner";
 import LocalBusinessSchema from "./Components/LocalBusinessSchema";
 import Script from "next/script";
+import NewFooter from "./Components/NewFooter";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -158,7 +159,8 @@ export default function RootLayout({ children }) {
         <PopupBanner />
         {children}
         <Whatsappicon />
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter />
 
         {/* ✅ Google Ads Tag: AW-16549958925 */}
         <Script
