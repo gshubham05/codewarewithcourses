@@ -164,6 +164,14 @@ const courseData = {
 
   "web-development-course-dehradun": {
     slug: "web-development-course-dehradun",
+    instructor: "Rahul Sharma — 8+ years web development & React experience",
+    batchDate: "5 May 2025",
+    seatsLeft: 9,
+    testimonials: [
+      { name: "Ritu Chauhan", role: "Web Developer, Dehradun Agency", text: "The web dev course at Codeware IT is the most practical I've seen. Got a job in 2 months!", rating: 5 },
+      { name: "Saurabh Rawat", role: "Freelance Web Developer", text: "HTML, CSS, JavaScript, React — all in one course with real projects. Highly recommend!", rating: 5 },
+      { name: "Pooja Bist", role: "BTech Student, GEU Dehradun", text: "Codeware IT made web development so easy to understand. Best institute in Dehradun!", rating: 5 },
+    ],
     title: "Web Development Course in Dehradun",
     metaTitle: "Web Development Course in Dehradun | Codeware IT",
     metaDescription:
@@ -196,6 +204,14 @@ const courseData = {
 
   "react-js-course-dehradun": {
     slug: "react-js-course-dehradun",
+    instructor: "Rahul Sharma — 8+ years React.js & frontend development",
+    batchDate: "5 May 2025",
+    seatsLeft: 7,
+    testimonials: [
+      { name: "Sneha Rawat", role: "React Developer, Dehradun Startup", text: "The React JS course at Codeware IT is incredibly hands-on. Built 3 real apps and got placed!", rating: 5 },
+      { name: "Mohit Bisht", role: "Frontend Intern, Remote", text: "Best React JS institute in Dehradun. Hooks, Redux, Router — all covered with real projects!", rating: 5 },
+      { name: "Kavya Negi", role: "BCA Graduate, HNBGU", text: "From zero React to building full apps in 3 months. Codeware IT made the difference!", rating: 5 },
+    ],
     title: "React JS Course in Dehradun",
     metaTitle: "React JS Course in Dehradun | Codeware IT",
     metaDescription:
@@ -228,6 +244,14 @@ const courseData = {
 
   "nextjs-course-dehradun": {
     slug: "nextjs-course-dehradun",
+    instructor: "Rahul Sharma — 6+ years Next.js & full-stack React experience",
+    batchDate: "5 May 2025",
+    seatsLeft: 8,
+    testimonials: [
+      { name: "Abhishek Thakur", role: "Next.js Dev, Remote", text: "Codeware IT's Next.js course is industry-grade. SSR, SSG, API routes — all deeply covered!", rating: 5 },
+      { name: "Isha Bisht", role: "Frontend Developer, Startup", text: "Finally understood the difference between React and Next.js. Excellent teaching!", rating: 5 },
+      { name: "Tarun Rawat", role: "BTech CSE, Graphic Era", text: "The capstone project in this course is production-ready. Best Next.js training in Dehradun!", rating: 5 },
+    ],
     title: "Next.js Course in Dehradun",
     metaTitle: "Next.js Course in Dehradun | Codeware IT",
     metaDescription:
@@ -353,6 +377,220 @@ const courseData = {
     duration: "6 Months",
     mode: "Offline / Online",
   },
-};
+
+
+  // ─── 6 Google Ads Landing Pages (Task 2) ─────────────────────────────────
+
+  "java-course-dehradun": {
+    slug: "java-course-dehradun",
+    title: "Java Course in Dehradun",
+    metaTitle: "Best Java Course in Dehradun | Codeware IT",
+    metaDescription:
+      "Join the best Java course in Dehradun at Codeware IT. Learn OOP, data structures, Spring Boot & get placement support. Book FREE demo today!",
+    keywords:
+      "java course dehradun, java training dehradun, java institute dehradun, learn java dehradun, best java classes dehradun",
+    heroTitle: "Best Java Course",
+    heroSubtitle: "in Dehradun",
+    heroTagline:
+      "Master Java from basics to Spring Boot with real-world projects, small batches & guaranteed placement support at Dehradun's #1 coding institute.",
+    badge: "🏆 Most Popular",
+    color: "#ea580c",
+    icon: "☕",
+    category: "Job Ready",
+    syllabus: [
+      "Core Java — Syntax, Variables, Data Types, Operators",
+      "Control Flow — if/else, switch, loops",
+      "Object-Oriented Programming — Classes, Inheritance, Polymorphism",
+      "Exception Handling & File I/O",
+      "Collections Framework — List, Set, Map, Iterator",
+      "Multithreading & Concurrency Basics",
+      "JDBC — Connect Java to MySQL",
+      "Spring Boot — REST APIs, Dependency Injection",
+      "Maven, Git & GitHub workflow",
+      "Capstone Project — Build a full Java backend app",
+    ],
+    demoTopics: "Java OOP — Classes, Inheritance, live mini-project",
+    targetAudience: "Students, freshers & professionals seeking Java jobs",
+    duration: "4 Months",
+    mode: "Offline / Online",
+    instructor: "Rahul Sharma — 8+ years Java & Spring Boot experience",
+    batchDate: "5 May 2025",
+    seatsLeft: 8,
+    testimonials: [
+      { name: "Ankit Rawat", role: "Java Developer, TCS Dehradun", text: "Codeware IT's Java course gave me real project experience. I cracked TCS in my first attempt!", rating: 5 },
+      { name: "Priya Singh", role: "Backend Intern, Startup Dehradun", text: "The small batch size meant I got personal attention every class. Best institute in Dehradun!", rating: 5 },
+      { name: "Vikram Negi", role: "BCA Student, HNB Garhwal", text: "After struggling with Java in college, Codeware IT made it crystal clear. Highly recommend!", rating: 5 },
+    ],
+  },
+
+  "python-course-dehradun": {
+    slug: "python-course-dehradun",
+    title: "Python Course in Dehradun",
+    metaTitle: "Best Python Course in Dehradun | Codeware IT",
+    metaDescription:
+      "Best Python training in Dehradun at Codeware IT. Learn Python, Django, data science & automation. Placement support. Book FREE demo today!",
+    keywords:
+      "python course dehradun, python training dehradun, python institute dehradun, learn python dehradun, best python classes dehradun",
+    heroTitle: "Best Python Course",
+    heroSubtitle: "in Dehradun",
+    heroTagline:
+      "From zero to Python pro — automation, web development & data science. Real projects, small batches, guaranteed results at Dehradun's top coding institute.",
+    badge: "🔥 Trending",
+    color: "#16a34a",
+    icon: "🐍",
+    category: "Job Ready",
+    syllabus: [
+      "Python Basics — Syntax, Variables, Data Types",
+      "Control Structures — Loops, Conditions, Functions",
+      "Object-Oriented Python — Classes, Inheritance",
+      "File Handling, Exception Handling",
+      "Libraries — NumPy, Pandas, Matplotlib",
+      "Web Scraping with BeautifulSoup & Requests",
+      "Django Basics — Models, Views, Templates",
+      "REST API with Django REST Framework",
+      "Introduction to Machine Learning with scikit-learn",
+      "Capstone Project — Build a Python web application",
+    ],
+    demoTopics: "Python Fundamentals + Build a web scraper live",
+    targetAudience: "Students, CBSE/ICSE learners, data enthusiasts & professionals",
+    duration: "4 Months",
+    mode: "Offline / Online",
+    instructor: "Neha Bisht — 6+ years Python & Django development",
+    batchDate: "5 May 2025",
+    seatsLeft: 7,
+    testimonials: [
+      { name: "Sonia Rawat", role: "Data Analyst, MNC Dehradun", text: "Codeware IT's Python course is hands-on from day one. Got my data analyst role within 2 months!", rating: 5 },
+      { name: "Deepak Semwal", role: "Python Dev, Remote Job", text: "The instructor explains things so clearly. I went from zero to building Django apps!", rating: 5 },
+      { name: "Riya Negi", role: "CBSE Class 12 Topper", text: "My board exam Python score jumped to 97/100 after just 1 month at Codeware IT!", rating: 5 },
+    ],
+  },
+
+  "mern-stack-course-dehradun": {
+    slug: "mern-stack-course-dehradun",
+    title: "MERN Stack Course in Dehradun",
+    metaTitle: "Best MERN Stack Course in Dehradun | Codeware IT",
+    metaDescription:
+      "Top MERN Stack training in Dehradun. Learn MongoDB, Express, React & Node.js at Codeware IT. Job placement support. Book FREE demo today!",
+    keywords:
+      "mern stack course dehradun, mern stack training dehradun, mern stack institute dehradun, learn mern stack dehradun, mongodb react nodejs express dehradun",
+    heroTitle: "Best MERN Stack Course",
+    heroSubtitle: "in Dehradun",
+    heroTagline:
+      "Build full-stack web apps with MongoDB, Express, React & Node.js. Industry-ready curriculum with real projects & job placement support.",
+    badge: "🚀 Job Ready",
+    color: "#0ea5e9",
+    icon: "⚡",
+    category: "Job Ready",
+    syllabus: [
+      "JavaScript ES6+ — Async/Await, Destructuring, Modules",
+      "React.js — Components, Hooks, State Management",
+      "React Router & Context API",
+      "Node.js — Runtime, Modules, File System",
+      "Express.js — REST APIs, Middleware, Error Handling",
+      "MongoDB & Mongoose — CRUD, Aggregation, Indexing",
+      "Authentication — JWT, bcrypt, Refresh Tokens",
+      "Redux Toolkit for State Management",
+      "Deployment — Vercel (Frontend) + Railway (Backend)",
+      "Capstone MERN Project — E-commerce / Portfolio App",
+    ],
+    demoTopics: "MERN Stack live — React UI + Node API + MongoDB in 60 min",
+    targetAudience: "Web dev enthusiasts, CS graduates, career switchers",
+    duration: "5 Months",
+    mode: "Offline / Online",
+    instructor: "Arjun Thapa — 7+ years MERN Stack & Startup experience",
+    batchDate: "5 May 2025",
+    seatsLeft: 6,
+    testimonials: [
+      { name: "Gaurav Bisht", role: "MERN Stack Dev, Infosys", text: "The MERN course at Codeware IT is the real deal. I built 3 live projects and got placed in Infosys!", rating: 5 },
+      { name: "Swati Rana", role: "Full Stack Intern, Dehradun Startup", text: "Finally understood how frontend and backend connect. Best MERN Stack institute in Dehradun!", rating: 5 },
+      { name: "Rohan Joshi", role: "Freelance Developer", text: "Within 4 months I started taking freelance projects. Codeware IT's curriculum is industry-aligned!", rating: 5 },
+    ],
+  },
+
+  "nodejs-course-dehradun": {
+    slug: "nodejs-course-dehradun",
+    title: "Node.js Course in Dehradun",
+    metaTitle: "Best Node.js Course in Dehradun | Codeware IT",
+    metaDescription:
+      "Learn Node.js & backend development in Dehradun at Codeware IT. Build scalable APIs, REST services & get job placement support. Book FREE demo!",
+    keywords:
+      "nodejs course dehradun, node js training dehradun, node js institute dehradun, learn nodejs dehradun, backend course dehradun nodejs",
+    heroTitle: "Best Node.js Course",
+    heroSubtitle: "in Dehradun",
+    heroTagline:
+      "Become a backend expert — build high-performance APIs, real-time apps & microservices with Node.js & Express at Dehradun's top coding institute.",
+    badge: "💼 High Demand",
+    color: "#84cc16",
+    icon: "🟩",
+    category: "Job Ready",
+    syllabus: [
+      "Node.js Internals — Event Loop, Non-blocking I/O",
+      "CommonJS & ES Modules in Node.js",
+      "Express.js — Routing, Middleware, Controllers",
+      "REST API Design Principles & Best Practices",
+      "MongoDB with Mongoose — Schema, CRUD, Queries",
+      "Authentication — JWT, Sessions, OAuth basics",
+      "File Uploads — Multer + Cloudinary integration",
+      "WebSockets & Real-time apps with Socket.io",
+      "Rate Limiting, CORS, Security Headers",
+      "Deployment — Docker basics, Railway, Render, AWS EC2",
+    ],
+    demoTopics: "Node.js + Express — Build a complete REST API live in 45 min",
+    targetAudience: "Frontend devs moving to backend, CS students, professionals",
+    duration: "3 Months",
+    mode: "Offline / Online",
+    instructor: "Arjun Thapa — 7+ years backend & API architecture",
+    batchDate: "5 May 2025",
+    seatsLeft: 8,
+    testimonials: [
+      { name: "Harish Panwar", role: "Backend Dev, Dehradun Tech Firm", text: "Node.js at Codeware IT made backend development feel natural. Got a job offer within weeks!", rating: 5 },
+      { name: "Monika Devi", role: "API Developer, Startup", text: "The course covers everything from basics to deployment. I now build APIs confidently!", rating: 5 },
+      { name: "Sumit Bhatt", role: "BTech CSE, Graphic Era", text: "After this course, my college projects look professional. Highly recommend Codeware IT!", rating: 5 },
+    ],
+  },
+
+  "full-stack-course-dehradun": {
+    slug: "full-stack-course-dehradun",
+    title: "Full Stack Developer Course in Dehradun",
+    metaTitle: "Best Full Stack Course in Dehradun | Codeware IT",
+    metaDescription:
+      "Top full stack developer course in Dehradun. Learn React, Node.js, MongoDB & deploy real apps at Codeware IT. Placement support. Book FREE demo!",
+    keywords:
+      "full stack course dehradun, full stack developer course dehradun, full stack training dehradun, full stack institute dehradun, mern full stack dehradun",
+    heroTitle: "Best Full Stack Developer Course",
+    heroSubtitle: "in Dehradun",
+    heroTagline:
+      "Master both frontend and backend — build complete web applications end-to-end. The most comprehensive coding course in Dehradun with guaranteed placement support.",
+    badge: "🏆 Most Comprehensive",
+    color: "#7c3aed",
+    icon: "🔮",
+    category: "Job Ready",
+    syllabus: [
+      "HTML5 & CSS3 — Responsive Design, Flexbox, Grid",
+      "JavaScript ES6+ — DOM, Fetch, Async/Await",
+      "React.js — Components, Hooks, Redux, Router",
+      "Node.js & Express — REST APIs, Middleware",
+      "MongoDB & Mongoose — Database Design",
+      "Authentication — JWT, bcrypt, Role-based access",
+      "Next.js — SSR, SSG, API Routes",
+      "Git & GitHub — Version control workflow",
+      "Deployment — Vercel, Railway, Netlify, AWS",
+      "Interview Prep — DSA basics, Resume building, Mock interviews",
+    ],
+    demoTopics: "Full stack mini-app — React + Node + MongoDB in one session",
+    targetAudience: "Anyone who wants a complete developer career transformation",
+    duration: "6 Months",
+    mode: "Offline / Online",
+    instructor: "Rahul Sharma + Arjun Thapa — Combined 15+ years full-stack experience",
+    batchDate: "5 May 2025",
+    seatsLeft: 5,
+    testimonials: [
+      { name: "Aakash Verma", role: "Full Stack Dev, Wipro Dehradun", text: "This 6-month course changed my life. From zero to Wipro full-stack developer — Codeware IT made it happen!", rating: 5 },
+      { name: "Divya Rawat", role: "Freelance Full Stack Developer", text: "I now earn ₹60k/month freelancing. Codeware IT's full stack course gave me the complete skillset!", rating: 5 },
+      { name: "Karan Negi", role: "Startup Founder, Dehradun", text: "I built my own startup app after this course. The best investment I've made in Dehradun!", rating: 5 },
+    ],
+  },
+}
+
 
 export default courseData;

@@ -1,5 +1,5 @@
-import courseData from "../../Courses/courseData";
-import CourseLandingPage from "../../Courses/CourseLandingPage";
+import courseData from "../../courses/courseData";
+import CourseLandingPage from "../../courses/CourseLandingPage";
 import CourseStructuredData from "../../Components/CourseStructuredData";
 
 const SLUG = "react-js-course-dehradun";

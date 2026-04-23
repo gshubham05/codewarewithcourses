@@ -1,10 +1,8 @@
-// import courseData from "../../courses/courseData";
-// import CourseLandingPage from "../../courses/CourseLandingPage";
-import CourseStructuredData from "../../Components/CourseStructuredData";
-import courseData from "../courseData";
-import CourseLandingPage from "../CourseLandingPage";
+import courseData from "../courses/courseData";
+import CourseLandingPage from "../courses/CourseLandingPage";
+import CourseStructuredData from "../Components/CourseStructuredData";
 
-const SLUG = "icse-class-10-java-dehradun";
+const SLUG = "nodejs-course-dehradun";
 
 export async function generateMetadata() {
   const course = courseData[SLUG];
@@ -15,7 +13,7 @@ export async function generateMetadata() {
     openGraph: {
       title: course.metaTitle,
       description: course.metaDescription,
-      url: "https://www.codewareit.in/courses/" + SLUG,
+      url: "https://www.codewareit.in/nodejs-course-dehradun",
       siteName: "Codeware IT Pvt Ltd",
       locale: "en_IN",
       type: "website",
@@ -26,7 +24,7 @@ export async function generateMetadata() {
       description: course.metaDescription,
     },
     alternates: {
-      canonical: "https://www.codewareit.in/courses/" + SLUG,
+      canonical: "https://www.codewareit.in/nodejs-course-dehradun",
     },
   };
 }

@@ -79,7 +79,7 @@ export default function HeroBanner() {
 
         {/* Headline */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4">
-          <span className="block text-white">Empower Your Future</span>
+          <span className="block text-white">Dehradun&apos;s #1 Coding Institute</span>
           <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent min-h-[1.2em]">
             {mounted && (
               <Typewriter
@@ -94,7 +94,7 @@ export default function HeroBanner() {
         <p className="text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mt-3">
           Join Dehradun's most trusted coding institute —
           <strong className="text-white"> real-world projects</strong>, expert mentorship &amp;
-          <strong className="text-white"> guaranteed results guaranteed placement supportamp; placement support</strong>.
+          <strong className="text-white"> guaranteed placement support</strong>.
         </p>
 
         {/* Phone + WhatsApp row */}
@@ -133,6 +133,18 @@ export default function HeroBanner() {
         </div>
 
         <p className="mt-3 text-xs text-gray-400">✓ No Cost &nbsp;·&nbsp; ✓ No Obligation &nbsp;·&nbsp; ✓ Meet Your Instructor Before You Commit</p>
+
+          {/* Book Free Counseling — above-the-fold CTA */}
+          <div className="mt-5 flex justify-center">
+            <a
+              href="https://wa.me/919837218345?text=Hi%2C%20I%20want%20a%20FREE%20Career%20Counseling%20session%20for%20coding%20courses%20in%20Dehradun!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-300 hover:text-white border border-purple-500/30 hover:border-purple-400 bg-purple-500/10 hover:bg-purple-500/20 px-5 py-2.5 rounded-full transition-all"
+            >
+              🎓 Book FREE Career Counseling
+            </a>
+          </div>
 
         {/* Stats row */}
         <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">

@@ -37,6 +37,14 @@ export async function GET() {
     { url: "/courses/frontend-course-dehradun",                                   priority: "0.9", changefreq: "monthly" },
     { url: "/courses/backend-course-dehradun",                                    priority: "0.9", changefreq: "monthly" },
     { url: "/courses/fullstack-course-dehradun",                                  priority: "0.9", changefreq: "monthly" },
+
+    // ── Google Ads Landing Pages (Task 2) — Top-level keyword URLs ────────────
+    { url: "/java-course-dehradun",                                               priority: "1.0", changefreq: "weekly"  },
+    { url: "/python-course-dehradun",                                             priority: "1.0", changefreq: "weekly"  },
+    { url: "/mern-stack-course-dehradun",                                         priority: "1.0", changefreq: "weekly"  },
+    { url: "/react-js-course-dehradun",                                           priority: "1.0", changefreq: "weekly"  },
+    { url: "/nodejs-course-dehradun",                                             priority: "1.0", changefreq: "weekly"  },
+    { url: "/full-stack-course-dehradun",                                         priority: "1.0", changefreq: "weekly"  },
   ];
 
   const urls = staticPages

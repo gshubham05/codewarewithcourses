@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes, FaPhone } from "react-icons/fa";
 import Image from "next/image";
 
 // ── SEO-friendly lowercase URLs ─────────────────────────────────────
@@ -72,6 +72,17 @@ export default function Navbar() {
   const handleMouseLeave = () => { leaveTimer.current = setTimeout(() => setOpenMenu(null), 120); };
   const toggleMobileMenu = () => { setIsOpen(!isOpen); setMobileCoursesOpen(false); setMobileCategoryOpen(null); };
 
+  const handlePhoneClick = () => {
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "phone_click", phone_number: "9837218345", location: "navbar" });
+      if (window.gtag) {
+        window.gtag("event", "conversion", { send_to: "AW-16549958925/PHONE_LABEL" });
+        window.gtag("event", "phone_call_click", { event_category: "engagement", event_label: "navbar" });
+      }
+    }
+  };
+
   return (
     <>
       <nav
@@ -89,6 +100,15 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* ✅ Click-to-call phone — visible on sm+ screens */}
+          <a
+            href="tel:+919837218345"
+            onClick={handlePhoneClick}
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-green-300 hover:text-white border border-green-500/30 hover:border-green-400 bg-green-500/10 hover:bg-green-500/20 px-3 py-1.5 rounded-full transition-all mr-2"
+            aria-label="Call CodewareIT Dehradun"
+          >
+            <FaPhone className="text-[10px]" /> +91 98372 18345
+          </a>
           <button onClick={toggleMobileMenu} className="md:hidden text-2xl" aria-label={isOpen ? "Close Menu" : "Open Menu"} aria-expanded={isOpen} aria-controls="mobile-menu">
             {isOpen ? <FaTimes className="text-white" /> : <FaBars className="text-white" />}
           </button>

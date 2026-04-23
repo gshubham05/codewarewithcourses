@@ -59,32 +59,32 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm">
             <li>
-              <Link href="/Courses/icse-class-9-java-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/icse-class-9-java-dehradun" className="hover:text-purple-300 transition-colors">
                 ICSE Class 9 &amp; 10 — Java
               </Link>
             </li>
             <li>
-              <Link href="/Courses/cbse-class-11-python-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/cbse-class-11-python-dehradun" className="hover:text-purple-300 transition-colors">
                 CBSE Class 11 &amp; 12 — Python
               </Link>
             </li>
             <li>
-              <Link href="/Courses/java-python-programming-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/java-python-programming-dehradun" className="hover:text-purple-300 transition-colors">
                 UG/PG Programming (BCA, MCA, BTech)
               </Link>
             </li>
             <li>
-              <Link href="/Courses/fullstack-course-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/fullstack-course-dehradun" className="hover:text-purple-300 transition-colors">
                 Full Stack Development
               </Link>
             </li>
             <li>
-              <Link href="/Courses/react-js-course-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/react-js-course-dehradun" className="hover:text-purple-300 transition-colors">
                 React.js / Next.js
               </Link>
             </li>
             <li>
-              <Link href="/Courses/backend-course-dehradun" className="hover:text-purple-300 transition-colors">
+              <Link href="/courses/backend-course-dehradun" className="hover:text-purple-300 transition-colors">
                 Backend / Node.js
               </Link>
             </li>

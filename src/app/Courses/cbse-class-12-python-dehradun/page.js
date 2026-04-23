@@ -1,6 +1,8 @@
-import courseData from "../../Courses/courseData";
-import CourseLandingPage from "../../Courses/CourseLandingPage";
+// import courseData from "../../courses/courseData";
+// import CourseLandingPage from "../../courses/CourseLandingPage";
 import CourseStructuredData from "../../Components/CourseStructuredData";
+import courseData from "../courseData";
+import CourseLandingPage from "../CourseLandingPage";
 
 const SLUG = "cbse-class-12-python-dehradun";
 
