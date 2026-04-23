@@ -5,8 +5,9 @@
 
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import connectDB from "@/app/lib/db";
+
 import Lead from "@/app/models/Lead";
+import { connectDB } from "@/app/lib/db";
 
 export async function POST(req) {
   try {
